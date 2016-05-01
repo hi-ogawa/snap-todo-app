@@ -1,10 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
-import           Control.Applicative
-import           Snap.Core
-import           Snap.Util.FileServe
-import           Snap.Http.Server
+import Control.Applicative
+import Snap.Core
+import Snap.Util.FileServe (serveDirectory)
+import Snap.Http.Server (quickHttpServe)
 
 main :: IO ()
 main = quickHttpServe site
