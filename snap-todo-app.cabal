@@ -20,7 +20,10 @@ Executable snap-todo-app
     MonadCatchIO-transformers >= 0.2.1 && < 0.4,
     mtl                       >= 2     && < 3,
     snap-core                 >= 0.9   && < 0.10,
-    snap-server               >= 0.9   && < 0.10
+    snap-server               >= 0.9   && < 0.10,
+    postgresql-simple         >= 0.5,
+    text                      >= 1.2,
+    transformers              >= 0.4
 
   ghc-options: -threaded -Wall -fwarn-tabs -funbox-strict-fields -O2
                -fno-warn-unused-do-bind
