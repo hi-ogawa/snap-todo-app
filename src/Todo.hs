@@ -11,6 +11,9 @@ import Database.PostgreSQL.Simple.ToRow
 
 import Db (pgConn)
 
+---------------------
+-- data definition --
+
 data Todo = Todo { key_id :: (Maybe Int), note :: T.Text, completed :: Bool}
             deriving (Show, Eq)
 
@@ -22,10 +25,12 @@ instance ToRow Todo where
   toRow (Todo (Just i) n c) = [toField n, toField c, toField i]
 
 
+---------------
+-- utilities --
+
 persisted :: Todo -> Bool
 persisted (Todo Nothing _ _) = False
 persisted _                  = True
-
 
 save :: Connection -> Todo -> IO Todo
 save conn todo =
@@ -49,6 +54,13 @@ find conn kId =
   where
     qSelect = "select id, note, completed from todo where id = ?"
 
+index :: Connection -> IO [Todo]
+index conn =
+  query_ conn qSelect
+  where
+    qSelect = "select id, note, completed from todo"
+
+
 ----------
 -- spec --
 
@@ -66,4 +78,7 @@ ex0 = do
   print t2
   -- delete
   delete conn (fromJust (key_id t2))
+  -- read all
+  ts <- index conn
+  print ts
   close conn
