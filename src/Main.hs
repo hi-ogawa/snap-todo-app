@@ -9,6 +9,18 @@ import           Snap.Http.Server
 main :: IO ()
 main = quickHttpServe site
 
+-- GET    /users
+-- GET    /users/:id
+-- POST   /users
+-- PUT    /users/:id
+-- DELETE /users/:id
+
+-- GET    /users/:id/todos
+-- GET    /users/:id/todos/:id
+-- POST   /users/:id/todos
+-- PUT    /users/:id/todos/:id
+-- DELETE /users/:id/todos/:id
+
 site :: Snap ()
 site =
     ifTop (writeBS "hello world") <|>
