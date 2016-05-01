@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./.cabal-sandbox.docker:/app/.cabal-sandbox
+    depends_on:
+      - db
+
+  db:
+    image: postgres:9.5
