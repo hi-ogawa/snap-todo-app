@@ -3,7 +3,6 @@ module Main where
 
 import Control.Applicative
 import Snap.Core
-import Snap.Util.FileServe (serveDirectory)
 import Snap.Http.Server (quickHttpServe)
 
 main :: IO ()
@@ -26,8 +25,7 @@ site =
     ifTop (writeBS "hello world") <|>
     route [ ("foo", writeBS "bar")
           , ("echo/:echoparam", echoHandler)
-          ] <|>
-    dir "static" (serveDirectory ".")
+          ]
 
 echoHandler :: Snap ()
 echoHandler = do
