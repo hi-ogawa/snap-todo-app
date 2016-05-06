@@ -7,8 +7,15 @@ services:
       - "8000:8000"
     volumes:
       - ./.cabal-sandbox.docker:/app/.cabal-sandbox
-    depends_on:
+    links:
       - db
 
   db:
     image: postgres:9.5
+    volumes_from:
+      - dbdata_box
+
+  dbdata_box:
+    image: busybox
+    volumes:
+      - /var/lib/postgresql/data
