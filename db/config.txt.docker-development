@@ -1,0 +1,7 @@
+ConnectInfo {
+  connectHost = "db",
+  connectPort = 5432,
+  connectUser = "postgres",
+  connectPassword = "",
+  connectDatabase = "postgres"
+  }

@@ -16,6 +16,8 @@ RUN cabal update
 
 COPY . /app
 
+RUN cp /app/db/config.txt.docker-development /app/db/config.txt
+
 EXPOSE 8000
 
 CMD cabal sandbox init && \
