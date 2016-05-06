@@ -1,5 +1,5 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
-module MySnap (MySnap, runMyHandler, getConn) where
+module MySnap (MySnap, runMyHandler, getConn, runMySnap) where
 
 import Control.Applicative
 import Control.Monad.Reader
