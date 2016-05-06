@@ -16,7 +16,7 @@ RUN cabal update
 
 COPY . /app
 
-RUN cp /app/db/config.txt.docker-development /app/db/config.txt
+RUN cp /app/db/config.txt.docker-production /app/db/config.txt
 
 EXPOSE 8000
 
