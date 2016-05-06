@@ -3,8 +3,6 @@ version: '2'
 services:
   app:
     build: .
-    ports:
-      - "8000:8000"
     volumes:
       - ./.cabal-sandbox.docker:/app/.cabal-sandbox
     links:
@@ -19,3 +17,10 @@ services:
     image: busybox
     volumes:
       - /var/lib/postgresql/data
+
+  web:
+    build: ./nginx-docker
+    ports:
+      - "80:80"
+    links:
+      - app
