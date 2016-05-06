@@ -2,8 +2,15 @@ FROM haskell:7.10.3
 
 WORKDIR /app
 
+
+RUN apt-get update
+
 # postgresql-simple dependency
-RUN apt-get update && apt-get install -y libpq-dev
+RUN apt-get install -y libpq-dev
+
+# for running migration script
+RUN apt-get install -y postgresql-client
+
 
 RUN cabal update
 
