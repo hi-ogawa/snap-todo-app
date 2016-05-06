@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
-import Control.Applicative
 import Control.Monad.IO.Class
 import Data.Aeson
 import qualified Data.ByteString as BS
