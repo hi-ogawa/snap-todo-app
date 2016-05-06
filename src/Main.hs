@@ -30,7 +30,8 @@ main = quickHttpServe . runMySnap $ mySite
 
 mySite :: MySnap ()
 mySite =
-  dir "todos" $
+  dir "todos" $ do
+    modifyResponse (setContentType "application/json")
     route [ ("",    method GET    cIndex   >>= serialize)
           , (":id", method GET    cShow    >>= serialize)
           , ("",    method POST   cCreate  >>= serialize)
