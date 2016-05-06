@@ -19,7 +19,8 @@ $ psql -U postgres -w -h $(docker-machine ip default) -p 5432 postgres < db/migr
 _First Time_
 
 ```
-$ git clone
+$ git clone https://github.com/hi-ogawa/snap-todo-app.git
+$ cd snap-todo-app
 $ docker-compose build
 $ docker-compose up -d
 $ docker-compose exec app /bin/bash -c "psql -U postgres -w -h db -p 5432 postgres < db/migrations/20160501_create_todo_table.sql"
