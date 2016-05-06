@@ -19,3 +19,22 @@ __Migrations__
 ```
 $ psql -U postgres -w -h $(docker-machine ip default) -p 5432 snap_todo_app_development < db/migrations/20160501_create_todo_table.sql
 ```
+
+### Deployment
+
+_First Time_
+
+```
+$ git clone
+$ docker-compose build
+$ docker-compose up -d
+$ docker-compose exec app /bin/bash -c "psql -U postgres -w -h db -p 5432 postgres < db/migrations/20160501_create_todo_table.sql"
+```
+
+_Further Update_
+
+```
+$ git pull
+$ docker-compose up -d --build app
+$ docker-compose exec db /bin/bash -c "psql -U postgres -w -h localhost -p 5432 postgres < db/migrations/..." # if migration's needed
+```
