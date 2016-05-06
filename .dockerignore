@@ -2,6 +2,7 @@
 cabal.sandbox.config
 dist
 log/*
+db/config.txt
 .git
 .gitignore
 .cabal-sandbox.docker

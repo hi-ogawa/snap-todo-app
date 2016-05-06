@@ -2,4 +2,5 @@
 cabal.sandbox.config
 dist
 log
+db/config.txt
 .cabal-sandbox.docker
