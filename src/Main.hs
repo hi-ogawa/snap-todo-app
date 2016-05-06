@@ -15,7 +15,10 @@ import qualified Snap.Test as Snap.Test
 import Test.Hspec
 
 import Todo
-import MySnap (MySnap, runMyHandler, getConn)
+import MySnap (MySnap, runMyHandler, getConn, runMySnap)
+
+main :: IO ()
+main = quickHttpServe . runMySnap $ mySite
 
 ------------
 -- routes --
