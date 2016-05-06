@@ -2,8 +2,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Todo where
 
+import Control.Applicative
+import Data.Aeson
 import qualified Data.Text as T
-import Data.Maybe
+import Data.Maybe (fromJust)
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.FromRow
 import Database.PostgreSQL.Simple.ToField
@@ -24,6 +26,13 @@ instance ToRow Todo where
   toRow (Todo Nothing n c) = [toField n, toField c]
   toRow (Todo (Just i) n c) = [toField n, toField c, toField i]
 
+instance ToJSON Todo where
+  toJSON (Todo Nothing n c) = object ["note" .= n, "completed" .= c]
+  toJSON (Todo (Just i) n c) = object ["id" .= i, "note" .= n, "completed" .= c]
+
+instance FromJSON Todo where
+  parseJSON (Object v) = Todo Nothing <$> v .: "note" <*> v .: "completed"
+  parseJSON _ = empty
 
 ---------------
 -- utilities --
