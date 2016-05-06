@@ -24,7 +24,9 @@ Executable snap-todo-app
     postgresql-simple         >= 0.5,
     text                      >= 1.2,
     transformers              >= 0.4,
-    hspec                     >= 2.0.2
+    hspec                     >= 2.0.2,
+    containers                >= 0.5.6,
+    aeson                     >= 0.11.2
 
   ghc-options: -threaded -Wall -fwarn-tabs -funbox-strict-fields -O2
                -fno-warn-unused-do-bind
