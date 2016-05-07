@@ -1,0 +1,8 @@
+---
+- hosts: all
+  user: ubuntu
+  become: yes
+  roles:
+    - role: 'hi-ogawa.docker'
+      docker_group:
+        - ubuntu

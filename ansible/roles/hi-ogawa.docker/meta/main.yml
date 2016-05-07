@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Hiroshi Ogawa
+  description: Docker role for Ubuntu 14.04
+  license: BSD
+
+  min_ansible_version: 2.1
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - trusty
+
+  galaxy_tags: [docker]
+
+dependencies: []

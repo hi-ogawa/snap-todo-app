@@ -16,6 +16,12 @@ $ psql -U postgres -w -h $(docker-machine ip default) -p 5432 postgres < db/migr
 
 ### Deployment
 
+_Install Docker on VPS_
+
+```
+$ ansible-playbook ansible/playbook.yml -i ansible/inventory
+```
+
 _First Time_
 
 ```

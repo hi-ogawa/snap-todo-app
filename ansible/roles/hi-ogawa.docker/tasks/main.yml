@@ -1,0 +1,49 @@
+---
+- name: install apt package dependencies
+  apt: name={{ item }} state=present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - apparmor
+
+- name: add apt_key
+  apt_key: keyserver='p80.pool.sks-keyservers.net'
+           id='58118E89F3A912897C070ADBF76221572C52609D'
+           state=present
+
+- name: add apt_repository
+  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-trusty main'
+                  filename='docker'
+                  state=present
+
+- name: purge old docker
+  apt: name=lxc-docker state=absent purge=yes
+
+- name: check kernel
+  command: uname -r
+  register: command_uname
+
+- name: install linux-image-extra
+  apt: name=linux-image-extra-{{ command_uname.stdout }} state=present
+
+- name: install docker
+  apt: name=docker-engine state=present
+  notify:
+    - restart docker
+
+- name: download docker-compose
+  shell: "curl -L https://github.com/docker/compose/releases/download/1.7.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
+  args:
+    executable: /bin/bash
+    creates: /usr/local/bin/docker-compose
+
+- name: change file attributes of docker-compose
+  file: path=/usr/local/bin/docker-compose mode="a+x"
+
+- name: add users to docker group
+  user:
+    append: yes
+    name: '{{ item }}'
+    group: docker
+    state: present
+  with_items: '{{ docker_group }}'
