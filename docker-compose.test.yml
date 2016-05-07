@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  app:
+    build: .
+    command: ./test.sh
+    volumes:
+      - ./.cabal-sandbox.docker:/app/.cabal-sandbox
+    links:
+      - db
+
+  db:
+    image: postgres:9.5
