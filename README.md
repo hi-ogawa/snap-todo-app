@@ -5,7 +5,7 @@ For now, I use postgresql from docker:
 ```
 $ cp db/config.txt.development db/config.txt
 $ docker run -d --name pg-data-dev -v /var/lib/postgresql/data busybox
-$ docker run -d --name pg-dev --volumes-from pg-data_dev -p 5432:5432 postgres:9.5
+$ docker run -d --name pg-dev --volumes-from pg-data-dev -p 5432:5432 postgres:9.5
 ```
 
 __Migrations__
