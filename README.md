@@ -8,7 +8,7 @@ $ docker run -d --name pg-data-dev -v /var/lib/postgresql/data busybox
 $ docker run -d --name pg-dev --volumes-from pg-data-dev -p 5432:5432 postgres:9.5
 ```
 
-__Migrations__
+_Migrations_
 
 ```
 $ psql -U postgres -w -h $(docker-machine ip default) -p 5432 postgres < db/migrations/20160501_create_todo_table.sql
