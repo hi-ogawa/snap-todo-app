@@ -1,3 +1,5 @@
+[![Build Status](http://jenkins.hiogawa.net/buildStatus/icon?job=snap_todo_app)](http://jenkins.hiogawa.net/job/snap_todo_app/)
+
 ### Development
 
 For now, I use postgresql from docker:
